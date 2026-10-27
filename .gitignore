@@ -5,3 +5,4 @@ managed_components/
 .dependencies.lock
 *.pyc
 .DS_Store
+benchmarks/rust/target/

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Generate benchmark results plots comparing C Baseline, C Optimized, and Goose on Core2."""
+"""Generate benchmark results plots comparing C, C-Opt, Rust, and Goose on M5Stack Core2."""
 import csv
 import matplotlib.pyplot as plt
 import numpy as np
 from collections import defaultdict
 
 def generate_plots():
-    groups = defaultdict(list)
+    groups = defaultdict(lambda: defaultdict(list))
     with open("benchmarks/results/raw_core2.log", encoding="utf-8", errors="replace") as f:
         for line in f:
             idx = line.find("BENCH,")
@@ -15,7 +15,7 @@ def generate_plots():
             fields = line[idx:].strip().split(",")
             if len(fields) == 8:
                 _, workload, impl, sample, us, checksum, internal, psram = fields
-                groups[impl].append({
+                groups[workload][impl].append({
                     "sample": int(sample),
                     "us": int(us),
                     "ms": int(us) / 1000.0,
@@ -28,75 +28,85 @@ def generate_plots():
         print("No samples found!")
         return
 
-    # Set up styling
+    # Style
     plt.style.use('seaborn-v0_8-whitegrid' if 'seaborn-v0_8-whitegrid' in plt.style.available else 'default')
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6.2), dpi=200)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6.8), dpi=220)
     fig.patch.set_facecolor('#ffffff')
 
     colors = {
         'c_opt': '#059669',    # Emerald
+        'rust': '#7c3aed',     # Purple
         'c': '#2563eb',        # Blue
         'goose': '#d97706',    # Amber
-        'rust': '#94a3b8'      # Slate
+        'c_arena': '#059669',  # Emerald
+        'c_heap': '#dc2626'    # Red
     }
 
-    labels = {
-        'c_opt': 'C (Arena/Pointer Opt)',
-        'c': 'C Baseline',
-        'goose': 'Goose (Ported Runtime)'
-    }
+    # ================= PANEL 1: array_scan =================
+    ax1.set_facecolor('#f8fafc')
+    w1 = groups.get('array_scan', {})
+    c_opt_ms = float(np.median([x['ms'] for x in w1.get('c_opt', [])])) if 'c_opt' in w1 else 0
+    rust1_ms = float(np.median([x['ms'] for x in w1.get('rust', [])])) if 'rust' in w1 else 0
+    c_ms = float(np.median([x['ms'] for x in w1.get('c', [])])) if 'c' in w1 else 0
+    goose1_ms = float(np.median([x['ms'] for x in w1.get('goose', [])])) if 'goose' in w1 else 0
 
-    # Plot 1: 30-run latency comparison
-    for impl in ['c_opt', 'c', 'goose']:
-        if impl in groups:
-            items = sorted(groups[impl], key=lambda x: x['sample'])
-            xs = [x['sample'] for x in items]
-            ys = [x['ms'] for x in items]
-            med = np.median(ys)
-            ax1.plot(xs, ys, marker='o', markersize=4.5, linewidth=1.6, color=colors[impl], 
-                     label=f"{labels[impl]} (Med: {med:.2f} ms)")
+    p1_labels = ['C (Optimized)', 'Rust (no_std)', 'C (Baseline)', 'Goose (Ported)']
+    p1_vals = [c_opt_ms, rust1_ms, c_ms, goose1_ms]
+    p1_colors = [colors['c_opt'], colors['rust'], colors['c'], colors['goose']]
+    p1_edges = ['#047857', '#6d28d9', '#1d4ed8', '#b45309']
 
-    ax1.set_title('Core2: array_scan (1024 items × 1000 inner) Latency Across 30 Runs', fontsize=11, fontweight='bold', pad=12)
-    ax1.set_xlabel('Sample Run Index (Warm)', fontsize=10)
-    ax1.set_ylabel('Execution Time (ms)', fontsize=10)
-    ax1.set_ylim(40, 205)
-    ax1.grid(True, linestyle='--', alpha=0.6)
-    ax1.legend(loc='upper right', frameon=True, facecolor='#f8fafc', edgecolor='#cbd5e1', fontsize=9.5)
+    bars1 = ax1.bar(p1_labels, p1_vals, color=p1_colors, edgecolor=p1_edges, width=0.55, linewidth=1.2, zorder=3)
+    ax1.set_title('Workload 1: array_scan (1,024 items × 1,000 iter)\nLatency by Implementation (Lower is Better)',
+                  fontsize=11.5, fontweight='bold', pad=12)
+    ax1.set_ylabel('Execution Time (ms)', fontsize=10.5, fontweight='bold')
+    ax1.set_ylim(0, 185)
+    ax1.grid(True, linestyle='--', alpha=0.6, axis='y', zorder=0)
 
-    # Plot 2: Median execution time comparison bar chart
-    bar_impls = ['C (Optimized)', 'C (Baseline)', 'Goose (Ported)', 'Rust (Pending)']
-    c_opt_med = float(np.median([x['ms'] for x in groups.get('c_opt', [])])) if 'c_opt' in groups else 0
-    c_med = float(np.median([x['ms'] for x in groups.get('c', [])])) if 'c' in groups else 0
-    goose_med = float(np.median([x['ms'] for x in groups.get('goose', [])])) if 'goose' in groups else 0
-    bar_vals = [c_opt_med, c_med, goose_med, 0]
-    bar_colors = [colors['c_opt'], colors['c'], colors['goose'], colors['rust']]
-    bar_edges = ['#047857', '#1d4ed8', '#b45309', '#64748b']
+    # Annotations for panel 1
+    ax1.text(0, c_opt_ms + 3.5, f"{c_opt_ms:.2f} ms\n(1.66x vs C)", ha='center', va='bottom', fontsize=9.5, fontweight='bold', color='#065f46')
+    ax1.text(1, rust1_ms + 3.5, f"{rust1_ms:.2f} ms\n(1.50x vs C)", ha='center', va='bottom', fontsize=9.5, fontweight='bold', color='#5b21b6')
+    ax1.text(2, c_ms + 3.5, f"{c_ms:.2f} ms\n(Baseline)", ha='center', va='bottom', fontsize=9.5, fontweight='bold', color='#1e40af')
+    ax1.text(3, goose1_ms + 3.5, f"{goose1_ms:.2f} ms\n(0.65x vs C)", ha='center', va='bottom', fontsize=9.5, fontweight='bold', color='#92400e')
 
-    bars = ax2.bar(bar_impls, bar_vals, color=bar_colors, edgecolor=bar_edges, width=0.55, linewidth=1.2)
-    ax2.set_title('Median Latency by Implementation (Core2 Hardware)', fontsize=11, fontweight='bold', pad=12)
-    ax2.set_ylabel('Execution Time (ms)', fontsize=10)
-    ax2.set_ylim(0, 180)
-    ax2.grid(True, linestyle='--', alpha=0.6, axis='y')
+    # ================= PANEL 2: record_arena =================
+    ax2.set_facecolor('#f8fafc')
+    w2 = groups.get('record_arena', {})
+    rust2_ms = float(np.median([x['ms'] for x in w2.get('rust', [])])) if 'rust' in w2 else 0
+    c_arena_ms = float(np.median([x['ms'] for x in w2.get('c_arena', [])])) if 'c_arena' in w2 else 0
+    goose2_ms = float(np.median([x['ms'] for x in w2.get('goose', [])])) if 'goose' in w2 else 0
+    c_heap_ms = float(np.median([x['ms'] for x in w2.get('c_heap', [])])) if 'c_heap' in w2 else 0
 
-    # Add bar value annotations
-    ax2.text(0, c_opt_med + 3, f"{c_opt_med:.2f} ms\n(1.66x faster)", ha='center', va='bottom', fontsize=9, fontweight='bold', color='#065f46')
-    ax2.text(1, c_med + 3, f"{c_med:.2f} ms\n(Baseline)", ha='center', va='bottom', fontsize=9, fontweight='bold', color='#1e40af')
-    ax2.text(2, goose_med + 3, f"{goose_med:.2f} ms\n(1.53x baseline)", ha='center', va='bottom', fontsize=9, fontweight='bold', color='#92400e')
-    ax2.text(3, 10, 'Toolchain Pending\n(Issue #7)', ha='center', va='bottom', fontsize=8.5, color='#64748b', style='italic')
+    p2_labels = ['Rust (Arena)', 'C (Arena Bump)', 'Goose (Arena O(1))', 'C (Heap malloc/free)']
+    p2_vals = [rust2_ms, c_arena_ms, goose2_ms, c_heap_ms]
+    p2_colors = [colors['rust'], colors['c_arena'], colors['goose'], colors['c_heap']]
+    p2_edges = ['#6d28d9', '#047857', '#b45309', '#b91c1c']
 
-    # Adjust layout
-    plt.subplots_adjust(bottom=0.22, top=0.90, wspace=0.22)
+    bars2 = ax2.bar(p2_labels, p2_vals, color=p2_colors, edgecolor=p2_edges, width=0.55, linewidth=1.2, zorder=3)
+    ax2.set_title('Workload 2: record_arena (64 records × 50 iter)\nMemory Allocation / Bump Latency (Lower is Better)',
+                  fontsize=11.5, fontweight='bold', pad=12)
+    ax2.set_ylabel('Execution Time (ms)', fontsize=10.5, fontweight='bold')
+    ax2.set_ylim(0, 115)
+    ax2.grid(True, linestyle='--', alpha=0.6, axis='y', zorder=0)
 
-    # Add environment metadata footer
-    env_text = (
-        "Target: M5Stack Core2 (ESP32-D0WDQ6-V3 @ 160MHz) | OS: FreeRTOS (ESP-IDF v5.3.1) | Compiler: xtensa-esp-elf GCC 13.2.0 (-Os)\n"
-        "Checksum Parity: 33582136 (100% deterministic across all 90 runs of C, C-Opt, and Goose)\n"
-        "Memory Footprint: C & C-Opt Free PSRAM: 4.19 MB | Goose Free PSRAM: 2.09 MB (~2 MB PSRAM stack-arena mapped)"
+    # Annotations for panel 2
+    ax2.text(0, rust2_ms + 2.5, f"{rust2_ms:.2f} ms\n(3.88x faster)", ha='center', va='bottom', fontsize=9.5, fontweight='bold', color='#5b21b6')
+    ax2.text(1, c_arena_ms + 2.5, f"{c_arena_ms:.2f} ms\n(2.50x faster)", ha='center', va='bottom', fontsize=9.5, fontweight='bold', color='#065f46')
+    ax2.text(2, goose2_ms + 2.5, f"{goose2_ms:.2f} ms\n(1.65x faster)", ha='center', va='bottom', fontsize=9.5, fontweight='bold', color='#92400e')
+    ax2.text(3, c_heap_ms + 2.5, f"{c_heap_ms:.2f} ms\n(C Heap Base)", ha='center', va='bottom', fontsize=9.5, fontweight='bold', color='#991b1b')
+
+    # Layout adjustment
+    plt.subplots_adjust(bottom=0.22, top=0.88, wspace=0.24)
+
+    # Footer note
+    footer = (
+        "Hardware: M5Stack Core2 (ESP32-D0WDQ6-V3 @ 160MHz) | OS: FreeRTOS (ESP-IDF v5.3.1) | 30 Runs Median\n"
+        "Compilers: GCC 13.2.0 (-Os) | Rust 1.97.0-nightly (xtensa-esp32-none-elf, opt-level=s) | Upstream Goose 0.1\n"
+        "Deterministic Checksums: array_scan = 33582136 (100% matched across 4 impls) | record_arena = 2469415251 (100% matched across 4 impls)"
     )
-    fig.text(0.5, 0.04, env_text, ha='center', fontsize=8.5, color='#334155',
-             bbox=dict(boxstyle='round,pad=0.5', facecolor='#f8fafc', edgecolor='#cbd5e1'))
+    fig.text(0.5, 0.04, footer, ha='center', fontsize=8.8, color='#334155',
+             bbox=dict(boxstyle='round,pad=0.55', facecolor='#f8fafc', edgecolor='#cbd5e1'))
 
-    plt.savefig("benchmarks/results/benchmark_results.png", bbox_inches='tight', dpi=200)
+    plt.savefig("benchmarks/results/benchmark_results.png", bbox_inches='tight', dpi=220)
     plt.close()
     print("Generated benchmarks/results/benchmark_results.png successfully!")
 

@@ -11,7 +11,7 @@ load:0x40080400,len:4
 load:0x40080404,len:3904
 entry 0x40080640
 [0;32mI (31) boot: ESP-IDF v5.3.1 2nd stage bootloader[0m
-[0;32mI (31) boot: compile time Oct 27 2026 14:35:44[0m
+[0;32mI (31) boot: compile time Oct 27 2026 15:57:00[0m
 [0;32mI (31) boot: Multicore bootloader[0m
 [0;32mI (35) boot: chip revision: v3.1[0m
 [0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
@@ -24,147 +24,293 @@ entry 0x40080640
 [0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
 [0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
 [0;32mI (92) boot: End of partition table[0m
-[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0daf0h ( 56048) map[0m
-[0;32mI (124) esp_image: segment 1: paddr=0001db18 vaddr=3ffb0000 size=023bch (  9148) load[0m
-[0;32mI (127) esp_image: segment 2: paddr=0001fedc vaddr=40080000 size=0013ch (   316) load[0m
-[0;32mI (130) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=17d24h ( 97572) map[0m
-[0;32mI (171) esp_image: segment 4: paddr=00037d4c vaddr=4008013c size=1055ch ( 66908) load[0m
-[0;32mI (206) boot: Loaded app from partition at offset 0x10000[0m
-[0;32mI (206) boot: Disabling RNG early entropy source...[0m
-[0;32mI (218) quad_psram: This chip is ESP32-D0WD[0m
-[0;32mI (220) esp_psram: Found 8MB PSRAM device[0m
-[0;32mI (220) esp_psram: Speed: 40MHz[0m
-[0;32mI (222) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
-[0;33mW (229) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
-[0;32mI (238) cpu_start: Multicore app[0m
-[0;32mI (1148) esp_psram: SPI SRAM memory test OK[0m
-[0;32mI (1156) cpu_start: Pro cpu start user code[0m
-[0;32mI (1156) cpu_start: cpu freq: 160000000 Hz[0m
-[0;32mI (1156) app_init: Application information:[0m
-[0;32mI (1159) app_init: Project name:     goose_core2[0m
-[0;32mI (1164) app_init: App version:      c4063b8-dirty[0m
-[0;32mI (1170) app_init: Compile time:     Oct 27 2026 15:17:50[0m
-[0;32mI (1176) app_init: ELF file SHA256:  df337f9f3...[0m
-[0;32mI (1181) app_init: ESP-IDF:          v5.3.1[0m
-[0;32mI (1186) efuse_init: Min chip rev:     v0.0[0m
-[0;32mI (1191) efuse_init: Max chip rev:     v3.99 [0m
-[0;32mI (1196) efuse_init: Chip rev:         v3.1[0m
-[0;32mI (1201) heap_init: Initializing. RAM available for dynamic allocation:[0m
-[0;32mI (1208) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
-[0;32mI (1214) heap_init: At 3FFB4D40 len 0002B2C0 (172 KiB): DRAM[0m
-[0;32mI (1221) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
-[0;32mI (1227) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
-[0;32mI (1234) heap_init: At 40090698 len 0000F968 (62 KiB): IRAM[0m
-[0;32mI (1240) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
-[0;32mI (1249) spi_flash: detected chip: generic[0m
-[0;32mI (1252) spi_flash: flash io: dio[0m
-[0;33mW (1256) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
-[0;32mI (1270) main_task: Started on CPU0[0m
-[0;32mI (1280) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
-[0;32mI (1280) main_task: Calling app_main()[0m
-[0;32mI (1280) goose_core2: Core2 ESP-IDF C baseline (Goose not integrated yet)[0m
-[0;32mI (1290) goose_core2: Free internal heap: 358863 bytes[0m
-[0;32mI (1300) goose_core2: Free PSRAM heap: 4191744 bytes[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0dd70h ( 56688) map[0m
+[0;32mI (124) esp_image: segment 1: paddr=0001dd98 vaddr=3ffb0000 size=02280h (  8832) load[0m
+[0;32mI (127) esp_image: segment 2: paddr=00020020 vaddr=400d0020 size=189a4h (100772) map[0m
+[0;32mI (164) esp_image: segment 3: paddr=000389cc vaddr=3ffb2280 size=0013ch (   316) load[0m
+[0;32mI (164) esp_image: segment 4: paddr=00038b10 vaddr=40080000 size=10698h ( 67224) load[0m
+[0;32mI (204) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (204) boot: Disabling RNG early entropy source...[0m
+[0;32mI (216) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (218) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (218) esp_psram: Speed: 40MHz[0m
+[0;32mI (220) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (228) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (237) cpu_start: Multicore app[0m
+[0;32mI (1146) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1154) cpu_start: Pro cpu start user code[0m
+[0;32mI (1154) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (1154) app_init: Application information:[0m
+[0;32mI (1158) app_init: Project name:     goose_core2[0m
+[0;32mI (1163) app_init: App version:      af6ade2-dirty[0m
+[0;32mI (1168) app_init: Compile time:     Oct 27 2026 15:57:05[0m
+[0;32mI (1174) app_init: ELF file SHA256:  3f52c8474...[0m
+[0;32mI (1180) app_init: ESP-IDF:          v5.3.1[0m
+[0;32mI (1185) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (1190) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (1195) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (1200) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1207) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (1213) heap_init: At 3FFB8D58 len 000272A8 (156 KiB): DRAM[0m
+[0;32mI (1219) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (1226) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (1232) heap_init: At 40090698 len 0000F968 (62 KiB): IRAM[0m
+[0;32mI (1239) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;32mI (1247) spi_flash: detected chip: generic[0m
+[0;32mI (1251) spi_flash: flash io: dio[0m
+[0;33mW (1255) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (1269) main_task: Started on CPU0[0m
+[0;32mI (1279) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1279) main_task: Calling app_main()[0m
+[0;32mI (1279) goose_core2: Core2 ESP-IDF C baseline (Goose not integrated yet)[0m
+[0;32mI (1289) goose_core2: Free internal heap: 313271 bytes[0m
+[0;32mI (1299) goose_core2: Free PSRAM heap: 4191744 bytes[0m
 BENCH_META,workload=array_scan,impl=c,N=1024,inner=1000,runs=30,expected=33582136
-BENCH,array_scan,c,0,96230,33582136,358863,4191744
-BENCH,array_scan,c,1,96234,33582136,358863,4191744
-BENCH,array_scan,c,2,96234,33582136,358863,4191744
-BENCH,array_scan,c,3,96225,33582136,358863,4191744
-BENCH,array_scan,c,4,96234,33582136,358863,4191744
-BENCH,array_scan,c,5,96234,33582136,358863,4191744
-BENCH,array_scan,c,6,96226,33582136,358863,4191744
-BENCH,array_scan,c,7,96234,33582136,358863,4191744
-BENCH,array_scan,c,8,96234,33582136,358863,4191744
-BENCH,array_scan,c,9,96226,33582136,358863,4191744
-BENCH,array_scan,c,10,96234,33582136,358863,4191744
-BENCH,array_scan,c,11,96226,33582136,358863,4191744
-BENCH,array_scan,c,12,96234,33582136,358863,4191744
-BENCH,array_scan,c,13,96234,33582136,358863,4191744
-BENCH,array_scan,c,14,96226,33582136,358863,4191744
-BENCH,array_scan,c,15,96234,33582136,358863,4191744
-BENCH,array_scan,c,16,96234,33582136,358863,4191744
-BENCH,array_scan,c,17,96226,33582136,358863,4191744
-BENCH,array_scan,c,18,96234,33582136,358863,4191744
-BENCH,array_scan,c,19,96234,33582136,358863,4191744
-BENCH,array_scan,c,20,96226,33582136,358863,4191744
-BENCH,array_scan,c,21,96235,33582136,358863,4191744
-BENCH,array_scan,c,22,96226,33582136,358863,4191744
-BENCH,array_scan,c,23,96234,33582136,358863,4191744
-BENCH,array_scan,c,24,96234,33582136,358863,4191744
-BENCH,array_scan,c,25,96226,33582136,358863,4191744
-BENCH,array_scan,c,26,96234,33582136,358863,4191744
-BENCH,array_scan,c,27,96234,33582136,358863,4191744
-BENCH,array_scan,c,28,96226,33582136,358863,4191744
-BENCH,array_scan,c,29,96234,33582136,358863,4191744
+BENCH,array_scan,c,0,96230,33582136,313271,4191744
+BENCH,array_scan,c,1,96225,33582136,313271,4191744
+BENCH,array_scan,c,2,96225,33582136,313271,4191744
+BENCH,array_scan,c,3,96225,33582136,313271,4191744
+BENCH,array_scan,c,4,96225,33582136,313271,4191744
+BENCH,array_scan,c,5,96225,33582136,313271,4191744
+BENCH,array_scan,c,6,96225,33582136,313271,4191744
+BENCH,array_scan,c,7,96225,33582136,313271,4191744
+BENCH,array_scan,c,8,96225,33582136,313271,4191744
+BENCH,array_scan,c,9,96225,33582136,313271,4191744
+BENCH,array_scan,c,10,96225,33582136,313271,4191744
+BENCH,array_scan,c,11,96225,33582136,313271,4191744
+BENCH,array_scan,c,12,96225,33582136,313271,4191744
+BENCH,array_scan,c,13,96225,33582136,313271,4191744
+BENCH,array_scan,c,14,96225,33582136,313271,4191744
+BENCH,array_scan,c,15,96225,33582136,313271,4191744
+BENCH,array_scan,c,16,96225,33582136,313271,4191744
+BENCH,array_scan,c,17,96225,33582136,313271,4191744
+BENCH,array_scan,c,18,96225,33582136,313271,4191744
+BENCH,array_scan,c,19,96225,33582136,313271,4191744
+BENCH,array_scan,c,20,96225,33582136,313271,4191744
+BENCH,array_scan,c,21,96225,33582136,313271,4191744
+BENCH,array_scan,c,22,96225,33582136,313271,4191744
+BENCH,array_scan,c,23,96225,33582136,313271,4191744
+BENCH,array_scan,c,24,96225,33582136,313271,4191744
+BENCH,array_scan,c,25,96225,33582136,313271,4191744
+BENCH,array_scan,c,26,96225,33582136,313271,4191744
+BENCH,array_scan,c,27,96225,33582136,313271,4191744
+BENCH,array_scan,c,28,96225,33582136,313271,4191744
+BENCH,array_scan,c,29,96225,33582136,313271,4191744
 BENCH_META,workload=array_scan,impl=c_opt,N=1024,inner=1000,runs=30,expected=33582136
-BENCH,array_scan,c_opt,0,57832,33582136,358863,4191744
-BENCH,array_scan,c_opt,1,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,2,57811,33582136,358863,4191744
-BENCH,array_scan,c_opt,3,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,4,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,5,57821,33582136,358863,4191744
-BENCH,array_scan,c_opt,6,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,7,57812,33582136,358863,4191744
-BENCH,array_scan,c_opt,8,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,9,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,10,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,11,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,12,57811,33582136,358863,4191744
-BENCH,array_scan,c_opt,13,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,14,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,15,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,16,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,17,57812,33582136,358863,4191744
-BENCH,array_scan,c_opt,18,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,19,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,20,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,21,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,22,57811,33582136,358863,4191744
-BENCH,array_scan,c_opt,23,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,24,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,25,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,26,57820,33582136,358863,4191744
-BENCH,array_scan,c_opt,27,57812,33582136,358863,4191744
-BENCH,array_scan,c_opt,28,57821,33582136,358863,4191744
-BENCH,array_scan,c_opt,29,57820,33582136,358863,4191744
+BENCH,array_scan,c_opt,0,57817,33582136,313271,4191744
+BENCH,array_scan,c_opt,1,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,2,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,3,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,4,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,5,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,6,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,7,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,8,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,9,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,10,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,11,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,12,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,13,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,14,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,15,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,16,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,17,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,18,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,19,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,20,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,21,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,22,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,23,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,24,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,25,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,26,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,27,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,28,57805,33582136,313271,4191744
+BENCH,array_scan,c_opt,29,57805,33582136,313271,4191744
 BENCH_META,workload=array_scan,impl=goose,N=1024,inner=1000,runs=30,expected=33582136
-BENCH,array_scan,goose,0,147555,33582136,358955,2094588
-BENCH,array_scan,goose,1,147552,33582136,358955,2094588
-[0;31mE (6280) task_wdt: Task watchdog got triggered. The following tasks/users did not reset the watchdog in time:[0m
-[0;31mE (6280) task_wdt:  - IDLE0 (CPU 0)[0m
-[0;31mE (6280) task_wdt: Tasks currently running:[0m
-[0;31mE (6280) task_wdt: CPU 0: main[0m
-[0;31mE (6280) task_wdt: CPU 1: IDLE1[0m
-[0;31mE (6280) task_wdt: Print CPU 0 (current core) backtrace[0m
-
-
-Backtrace: 0x400DB20B:0x3FFB0FD0 0x400DB5E8:0x3FFB0FF0 0x400853B1:0x3FFB1020 0x400D9C8C:0x3FFB5F70 0x400D9CB7:0x3FFB5F90 0x400D9E19:0x3FFB5FB0 0x400D9BD9:0x3FFB5FD0 0x400D9A50:0x3FFB6000 0x400E7494:0x3FFB6020 0x4008987D:0x3FFB6050
-
-BENCH,array_scan,goose,2,190104,33582136,358955,2094588
-BENCH,array_scan,goose,3,147543,33582136,358955,2094588
-BENCH,array_scan,goose,4,147552,33582136,358955,2094588
-BENCH,array_scan,goose,5,147551,33582136,358955,2094588
-BENCH,array_scan,goose,6,147551,33582136,358955,2094588
-BENCH,array_scan,goose,7,147543,33582136,358955,2094588
-BENCH,array_scan,goose,8,147543,33582136,358955,2094588
-BENCH,array_scan,goose,9,147552,33582136,358955,2094588
-BENCH,array_scan,goose,10,147551,33582136,358955,2094588
-BENCH,array_scan,goose,11,147551,33582136,358955,2094588
-BENCH,array_scan,goose,12,147543,33582136,358955,2094588
-BENCH,array_scan,goose,13,147552,33582136,358955,2094588
-BENCH,array_scan,goose,14,147551,33582136,358955,2094588
-BENCH,array_scan,goose,15,147551,33582136,358955,2094588
-BENCH,array_scan,goose,16,147543,33582136,358955,2094588
-BENCH,array_scan,goose,17,147552,33582136,358955,2094588
-BENCH,array_scan,goose,18,147551,33582136,358955,2094588
-BENCH,array_scan,goose,19,147551,33582136,358955,2094588
-BENCH,array_scan,goose,20,147551,33582136,358955,2094588
-BENCH,array_scan,goose,21,147542,33582136,358955,2094588
-BENCH,array_scan,goose,22,147551,33582136,358955,2094588
-BENCH,array_scan,goose,23,147551,33582136,358955,2094588
-BENCH,array_scan,goose,24,147551,33582136,358955,2094588
-BENCH,array_scan,goose,25,147543,33582136,358955,2094588
-BENCH,array_scan,goose,26,147551,33582136,358955,2094588
-BENCH,array_scan,goose,27,147551,33582136,358955,2094588
-BENCH,array_scan,goose,28,147552,33582136,358955,2094588
-BENCH,array_scan,goose,29,147551,33582136,358955,2094588
+BENCH,array_scan,goose,0,147547,33582136,313363,2094588
+BENCH,array_scan,goose,1,147543,33582136,313363,2094588
+BENCH,array_scan,goose,2,147543,33582136,313363,2094588
+BENCH,array_scan,goose,3,147543,33582136,313363,2094588
+BENCH,array_scan,goose,4,147543,33582136,313363,2094588
+BENCH,array_scan,goose,5,147543,33582136,313363,2094588
+BENCH,array_scan,goose,6,147543,33582136,313363,2094588
+BENCH,array_scan,goose,7,147543,33582136,313363,2094588
+BENCH,array_scan,goose,8,147543,33582136,313363,2094588
+BENCH,array_scan,goose,9,147543,33582136,313363,2094588
+BENCH,array_scan,goose,10,147543,33582136,313363,2094588
+BENCH,array_scan,goose,11,147543,33582136,313363,2094588
+BENCH,array_scan,goose,12,147543,33582136,313363,2094588
+BENCH,array_scan,goose,13,147543,33582136,313363,2094588
+BENCH,array_scan,goose,14,147543,33582136,313363,2094588
+BENCH,array_scan,goose,15,147543,33582136,313363,2094588
+BENCH,array_scan,goose,16,147543,33582136,313363,2094588
+BENCH,array_scan,goose,17,147543,33582136,313363,2094588
+BENCH,array_scan,goose,18,147543,33582136,313363,2094588
+BENCH,array_scan,goose,19,147543,33582136,313363,2094588
+BENCH,array_scan,goose,20,147543,33582136,313363,2094588
+BENCH,array_scan,goose,21,147543,33582136,313363,2094588
+BENCH,array_scan,goose,22,147543,33582136,313363,2094588
+BENCH,array_scan,goose,23,147543,33582136,313363,2094588
+BENCH,array_scan,goose,24,147543,33582136,313363,2094588
+BENCH,array_scan,goose,25,147543,33582136,313363,2094588
+BENCH,array_scan,goose,26,147543,33582136,313363,2094588
+BENCH,array_scan,goose,27,147543,33582136,313363,2094588
+BENCH,array_scan,goose,28,147543,33582136,313363,2094588
+BENCH,array_scan,goose,29,147543,33582136,313363,2094588
+BENCH_META,workload=array_scan,impl=rust,N=1024,inner=1000,runs=30,expected=33582136
+BENCH,array_scan,rust,0,64189,33582136,313363,2094588
+BENCH,array_scan,rust,1,64188,33582136,313363,2094588
+BENCH,array_scan,rust,2,64188,33582136,313363,2094588
+BENCH,array_scan,rust,3,64188,33582136,313363,2094588
+BENCH,array_scan,rust,4,64188,33582136,313363,2094588
+BENCH,array_scan,rust,5,64188,33582136,313363,2094588
+BENCH,array_scan,rust,6,64188,33582136,313363,2094588
+BENCH,array_scan,rust,7,64188,33582136,313363,2094588
+BENCH,array_scan,rust,8,64188,33582136,313363,2094588
+BENCH,array_scan,rust,9,64188,33582136,313363,2094588
+BENCH,array_scan,rust,10,64188,33582136,313363,2094588
+BENCH,array_scan,rust,11,64188,33582136,313363,2094588
+BENCH,array_scan,rust,12,64188,33582136,313363,2094588
+BENCH,array_scan,rust,13,64188,33582136,313363,2094588
+BENCH,array_scan,rust,14,64188,33582136,313363,2094588
+BENCH,array_scan,rust,15,64188,33582136,313363,2094588
+BENCH,array_scan,rust,16,64188,33582136,313363,2094588
+BENCH,array_scan,rust,17,64188,33582136,313363,2094588
+BENCH,array_scan,rust,18,64188,33582136,313363,2094588
+BENCH,array_scan,rust,19,64188,33582136,313363,2094588
+BENCH,array_scan,rust,20,64188,33582136,313363,2094588
+BENCH,array_scan,rust,21,64188,33582136,313363,2094588
+BENCH,array_scan,rust,22,64188,33582136,313363,2094588
+BENCH,array_scan,rust,23,64188,33582136,313363,2094588
+BENCH,array_scan,rust,24,64188,33582136,313363,2094588
+BENCH,array_scan,rust,25,64188,33582136,313363,2094588
+BENCH,array_scan,rust,26,64188,33582136,313363,2094588
+BENCH,array_scan,rust,27,64188,33582136,313363,2094588
+BENCH,array_scan,rust,28,64188,33582136,313363,2094588
+BENCH,array_scan,rust,29,64188,33582136,313363,2094588
+BENCH_META,workload=record_arena,impl=c_heap,N=64,inner=50,runs=30,expected=2469415251
+BENCH,record_arena,c_heap,0,92006,2469415251,313363,2094588
+BENCH,record_arena,c_heap,1,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,2,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,3,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,4,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,5,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,6,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,7,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,8,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,9,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,10,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,11,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,12,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,13,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,14,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,15,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,16,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,17,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,18,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,19,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,20,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,21,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,22,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,23,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,24,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,25,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,26,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,27,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,28,91964,2469415251,313363,2094588
+BENCH,record_arena,c_heap,29,91964,2469415251,313363,2094588
+BENCH_META,workload=record_arena,impl=c_arena,N=64,inner=50,runs=30,expected=2469415251
+BENCH,record_arena,c_arena,0,36813,2469415251,313363,2094588
+BENCH,record_arena,c_arena,1,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,2,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,3,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,4,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,5,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,6,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,7,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,8,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,9,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,10,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,11,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,12,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,13,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,14,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,15,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,16,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,17,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,18,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,19,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,20,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,21,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,22,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,23,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,24,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,25,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,26,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,27,36784,2469415251,313363,2094588
+BENCH,record_arena,c_arena,28,36792,2469415251,313363,2094588
+BENCH,record_arena,c_arena,29,36784,2469415251,313363,2094588
+BENCH_META,workload=record_arena,impl=goose,N=64,inner=50,runs=30,expected=2469415251
+BENCH,record_arena,goose,0,56153,2469415251,313303,521716
+BENCH,record_arena,goose,1,55837,2469415251,313303,521716
+BENCH,record_arena,goose,2,55837,2469415251,313303,521716
+BENCH,record_arena,goose,3,55837,2469415251,313303,521716
+BENCH,record_arena,goose,4,55837,2469415251,313303,521716
+BENCH,record_arena,goose,5,55837,2469415251,313303,521716
+BENCH,record_arena,goose,6,55837,2469415251,313303,521716
+BENCH,record_arena,goose,7,55837,2469415251,313303,521716
+BENCH,record_arena,goose,8,55837,2469415251,313303,521716
+BENCH,record_arena,goose,9,55837,2469415251,313303,521716
+BENCH,record_arena,goose,10,55837,2469415251,313303,521716
+BENCH,record_arena,goose,11,55837,2469415251,313303,521716
+BENCH,record_arena,goose,12,55837,2469415251,313303,521716
+BENCH,record_arena,goose,13,55837,2469415251,313303,521716
+BENCH,record_arena,goose,14,55837,2469415251,313303,521716
+BENCH,record_arena,goose,15,55837,2469415251,313303,521716
+BENCH,record_arena,goose,16,55837,2469415251,313303,521716
+BENCH,record_arena,goose,17,55837,2469415251,313303,521716
+BENCH,record_arena,goose,18,55837,2469415251,313303,521716
+BENCH,record_arena,goose,19,55837,2469415251,313303,521716
+BENCH,record_arena,goose,20,55837,2469415251,313303,521716
+BENCH,record_arena,goose,21,55837,2469415251,313303,521716
+BENCH,record_arena,goose,22,55837,2469415251,313303,521716
+BENCH,record_arena,goose,23,55837,2469415251,313303,521716
+BENCH,record_arena,goose,24,55837,2469415251,313303,521716
+BENCH,record_arena,goose,25,55837,2469415251,313303,521716
+BENCH,record_arena,goose,26,55837,2469415251,313303,521716
+BENCH,record_arena,goose,27,55837,2469415251,313303,521716
+BENCH,record_arena,goose,28,55837,2469415251,313303,521716
+BENCH,record_arena,goose,29,55837,2469415251,313303,521716
+BENCH_META,workload=record_arena,impl=rust,N=64,inner=50,runs=30,expected=2469415251
+BENCH,record_arena,rust,0,23715,2469415251,313303,521716
+BENCH,record_arena,rust,1,23683,2469415251,313303,521716
+BENCH,record_arena,rust,2,23683,2469415251,313303,521716
+BENCH,record_arena,rust,3,23683,2469415251,313303,521716
+BENCH,record_arena,rust,4,23683,2469415251,313303,521716
+BENCH,record_arena,rust,5,23683,2469415251,313303,521716
+BENCH,record_arena,rust,6,23683,2469415251,313303,521716
+BENCH,record_arena,rust,7,23683,2469415251,313303,521716
+BENCH,record_arena,rust,8,23683,2469415251,313303,521716
+BENCH,record_arena,rust,9,23683,2469415251,313303,521716
+BENCH,record_arena,rust,10,23683,2469415251,313303,521716
+BENCH,record_arena,rust,11,23683,2469415251,313303,521716
+BENCH,record_arena,rust,12,23683,2469415251,313303,521716
+BENCH,record_arena,rust,13,23683,2469415251,313303,521716
+BENCH,record_arena,rust,14,23683,2469415251,313303,521716
+BENCH,record_arena,rust,15,23683,2469415251,313303,521716
+BENCH,record_arena,rust,16,23683,2469415251,313303,521716
+BENCH,record_arena,rust,17,23683,2469415251,313303,521716
+BENCH,record_arena,rust,18,23683,2469415251,313303,521716
+BENCH,record_arena,rust,19,23683,2469415251,313303,521716
+BENCH,record_arena,rust,20,23683,2469415251,313303,521716
+BENCH,record_arena,rust,21,23683,2469415251,313303,521716
+BENCH,record_arena,rust,22,23683,2469415251,313303,521716
+BENCH,record_arena,rust,23,23683,2469415251,313303,521716
+BENCH,record_arena,rust,24,23683,2469415251,313303,521716
+BENCH,record_arena,rust,25,23683,2469415251,313303,521716
+BENCH,record_arena,rust,26,23683,2469415251,313303,521716
+BENCH,record_arena,rust,27,23683,2469415251,313303,521716
+BENCH,record_arena,rust,28,23683,2469415251,313303,521716
+BENCH,record_arena,rust,29,23683,2469415251,313303,521716
+[0;32mI (19609) main_task: Returned from app_main()[0m
