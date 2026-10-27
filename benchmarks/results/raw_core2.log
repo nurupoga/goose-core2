@@ -1,0 +1,98 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7176
+load:0x40078000,len:15564
+ho 0 tail 12 room 4
+load:0x40080400,len:4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.3.1 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Oct 27 2026 14:35:44[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v3.1[0m
+[0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0d8f4h ( 55540) map[0m
+[0;32mI (123) esp_image: segment 1: paddr=0001d91c vaddr=3ffb0000 size=023bch (  9148) load[0m
+[0;32mI (127) esp_image: segment 2: paddr=0001fce0 vaddr=40080000 size=00338h (   824) load[0m
+[0;32mI (130) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=17520h ( 95520) map[0m
+[0;32mI (170) esp_image: segment 4: paddr=00037548 vaddr=40080338 size=102dch ( 66268) load[0m
+[0;32mI (205) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (205) boot: Disabling RNG early entropy source...[0m
+[0;32mI (217) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (219) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (219) esp_psram: Speed: 40MHz[0m
+[0;32mI (221) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (228) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (237) cpu_start: Multicore app[0m
+[0;32mI (1147) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1155) cpu_start: Pro cpu start user code[0m
+[0;32mI (1155) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (1155) app_init: Application information:[0m
+[0;32mI (1158) app_init: Project name:     goose_core2[0m
+[0;32mI (1163) app_init: App version:      150e290[0m
+[0;32mI (1168) app_init: Compile time:     Oct 27 2026 14:35:35[0m
+[0;32mI (1174) app_init: ELF file SHA256:  0337eeb0c...[0m
+[0;32mI (1180) app_init: ESP-IDF:          v5.3.1[0m
+[0;32mI (1184) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (1189) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (1194) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (1200) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1207) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (1213) heap_init: At 3FFB3CF0 len 0002C310 (176 KiB): DRAM[0m
+[0;32mI (1219) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (1225) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (1232) heap_init: At 40090614 len 0000F9EC (62 KiB): IRAM[0m
+[0;32mI (1239) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;32mI (1247) spi_flash: detected chip: generic[0m
+[0;32mI (1251) spi_flash: flash io: dio[0m
+[0;33mW (1255) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (1269) main_task: Started on CPU0[0m
+[0;32mI (1279) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1279) main_task: Calling app_main()[0m
+[0;32mI (1279) goose_core2: Core2 ESP-IDF C baseline (Goose not integrated yet)[0m
+[0;32mI (1289) goose_core2: Free internal heap: 363171 bytes[0m
+[0;32mI (1299) goose_core2: Free PSRAM heap: 4191744 bytes[0m
+BENCH_META,workload=array_scan,impl=c,N=1024,inner=1000,runs=30,expected=33582136
+BENCH,array_scan,c,0,96230,33582136,363171,4191744
+BENCH,array_scan,c,1,96234,33582136,363171,4191744
+BENCH,array_scan,c,2,96234,33582136,363171,4191744
+BENCH,array_scan,c,3,96226,33582136,363171,4191744
+BENCH,array_scan,c,4,96234,33582136,363171,4191744
+BENCH,array_scan,c,5,96234,33582136,363171,4191744
+BENCH,array_scan,c,6,96226,33582136,363171,4191744
+BENCH,array_scan,c,7,96234,33582136,363171,4191744
+BENCH,array_scan,c,8,96234,33582136,363171,4191744
+BENCH,array_scan,c,9,96226,33582136,363171,4191744
+BENCH,array_scan,c,10,96234,33582136,363171,4191744
+BENCH,array_scan,c,11,96226,33582136,363171,4191744
+BENCH,array_scan,c,12,96234,33582136,363171,4191744
+BENCH,array_scan,c,13,96234,33582136,363171,4191744
+BENCH,array_scan,c,14,96226,33582136,363171,4191744
+BENCH,array_scan,c,15,96234,33582136,363171,4191744
+BENCH,array_scan,c,16,96234,33582136,363171,4191744
+BENCH,array_scan,c,17,96226,33582136,363171,4191744
+BENCH,array_scan,c,18,96234,33582136,363171,4191744
+BENCH,array_scan,c,19,96235,33582136,363171,4191744
+BENCH,array_scan,c,20,96226,33582136,363171,4191744
+BENCH,array_scan,c,21,96234,33582136,363171,4191744
+BENCH,array_scan,c,22,96226,33582136,363171,4191744
+BENCH,array_scan,c,23,96234,33582136,363171,4191744
+BENCH,array_scan,c,24,96234,33582136,363171,4191744
+BENCH,array_scan,c,25,96226,33582136,363171,4191744
+BENCH,array_scan,c,26,96234,33582136,363171,4191744
+BENCH,array_scan,c,27,96234,33582136,363171,4191744
+BENCH,array_scan,c,28,96226,33582136,363171,4191744
+BENCH,array_scan,c,29,96235,33582136,363171,4191744

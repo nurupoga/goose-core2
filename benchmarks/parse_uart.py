@@ -17,7 +17,7 @@ def main():
             if idx < 0:
                 continue
             fields = line[idx:].strip().split(",")
-            if len(fields) != 7:
+            if len(fields) != 8:
                 continue
             _, workload, impl, sample, us, checksum, internal, psram = fields
             try:
