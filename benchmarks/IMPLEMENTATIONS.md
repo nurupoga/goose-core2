@@ -3,9 +3,9 @@
 | Implementation | Build | Hardware run | Checksum parity |
 |---|---|---|---|
 | C baseline | verified (ESP-IDF v5.3.1) | verified (Core2, 30 runs, median 96.23 ms) | verified (`33582136`) |
-| C arena-optimized | pending | pending | pending |
-| Rust | pending | pending | pending |
-| Goose | pending on runtime port | pending | pending |
+| C optimized | verified (ESP-IDF v5.3.1) | verified (Core2, 30 runs, median 57.82 ms) | verified (`33582136`) |
+| Goose (ported runtime) | verified (ESP-IDF v5.3.1 + PSRAM) | verified (Core2, 30 runs, median 147.55 ms) | verified (`33582136`) |
+| Rust | pending toolchain | pending | pending |
 
 Do not treat generated examples or unexecuted tests as measurements.
 

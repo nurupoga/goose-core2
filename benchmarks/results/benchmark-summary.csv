@@ -1,2 +1,4 @@
 workload,implementation,samples,median_us,p95_us,min_us,max_us,checksum,min_free_internal_bytes,min_free_psram_bytes
-array_scan,c,30,96234.0,96235,96226,96235,33582136,363171,4191744
+array_scan,c,30,96234.0,96234,96225,96235,33582136,358863,4191744
+array_scan,c_opt,30,57820.0,57821,57811,57832,33582136,358863,4191744
+array_scan,goose,30,147551.0,147555,147542,190104,33582136,358955,2094588
